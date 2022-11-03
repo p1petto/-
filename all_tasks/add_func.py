@@ -23,3 +23,14 @@ def is_matrix(a):
         if l != len(i):
             return False
     return True
+
+def get_nonzero_idx(matrix, i):
+    while i < len(matrix) and matrix[i][i] == 0:
+        i += 1
+    return i
+
+def get_root(matrix):
+    root = []
+    for i in range(len(matrix)):
+        root.append(matrix[i][-1])
+    return root

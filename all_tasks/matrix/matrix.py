@@ -81,7 +81,7 @@ def multiply_row_by_value(a, idx, val):
             return a
 
 def addition_mul_row(a, x, y, val):
-    """сложение строк матрицы с индексами х + у, умноженную на скаляр"""
+    """сложение строки матрицы с индексом х на строку с индексом у, умноженную на скаляр"""
     if is_matrix(a):
         if x < len(a) and x >= 0 and y < len(a) and y >= 0:
             temp = vc.multiply_by_value(a[y].copy(), val)
@@ -89,7 +89,7 @@ def addition_mul_row(a, x, y, val):
             return a
 
 def difference_mul_row(a, x, y, val):
-    """сложение строк матрицы с индексами х + у, умноженную на скаляр"""
+    """вычитание строки матрицы с индексом х на строку с индексом у, умноженную на скаляр"""
     if is_matrix(a):
         if x < len(a) and x >= 0 and y < len(a) and y >= 0:
             temp = vc.multiply_by_value(a[y].copy(), val)
