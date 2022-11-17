@@ -1,5 +1,3 @@
-from itertools import zip_longest
-import os.path as path
 from add_func import *
 
 
@@ -77,7 +75,7 @@ def get_cos(a, b):
 
 def are_codirectional(a, b):
     """сонаправленность"""
-    if (all(x == 0 for x in a) or all(x == 0 for x in b)):
+    if all(x == 0 for x in a) or all(x == 0 for x in b):
         return True
 
     cos_vec = get_cos(a, b)
@@ -88,7 +86,7 @@ def are_codirectional(a, b):
 def are_oppositely_directed(a, b):
     """противоположнонаправленность"""
 
-    if (all(x == 0 for x in a) or all(x == 0 for x in b)):
+    if all(x == 0 for x in a) or all(x == 0 for x in b):
         return True
 
     cos_vec = get_cos(a, b)
