@@ -27,23 +27,16 @@ def backward_trace(n, matrix):
     return matrix
 
 
-def get_expanded_matrix(matrix, res):
-    expanded_matrix = matrix.copy()
-    for i in range(len(res)):
-        expanded_matrix[i].append(res[i])
-    return expanded_matrix
-
-
 def main(matrix, res):
     expanded_matrix = get_expanded_matrix(matrix, res)
-    print('\nРасширенная матрица\n', np.array(expanded_matrix))
+    # print('\nРасширенная матрица\n', np.array(expanded_matrix))
 
     expanded_matrix = forward_trace(len(matrix), expanded_matrix)
-    print('\nПрямой ход\n', np.array(expanded_matrix))
+    # print('\nПрямой ход\n', np.array(expanded_matrix))
 
     expanded_matrix = backward_trace(len(matrix), expanded_matrix)
-    print('\nОбратный ход\n', np.array(expanded_matrix))
+    # print('\nОбратный ход\n', np.array(expanded_matrix))
 
     root = get_root(expanded_matrix)
-    print('\nКорни уравнения\n', root)
+    # print('\nКорни уравнения\n', root)
     return root

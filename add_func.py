@@ -41,3 +41,10 @@ def get_root(matrix):
     for i in range(len(matrix)):
         root.append(matrix[i][-1])
     return root
+
+
+def get_expanded_matrix(matrix, res):
+    expanded_matrix = matrix.copy()
+    for i in range(len(res)):
+        expanded_matrix[i].append(res[i])
+    return expanded_matrix
