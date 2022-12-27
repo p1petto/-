@@ -50,3 +50,4 @@ def get_maclaurin_arcsin(x, n):
 
 def get_maclaurin_arccos(x, n):
     return math.pi / 2 - get_maclaurin_arcsin(x, n)
+

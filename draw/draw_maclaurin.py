@@ -34,3 +34,4 @@ def draw_maclaurin_row(title, func, x_range, n):
     ax.legend()
 
     plt.show()
+
