@@ -102,3 +102,7 @@ def difference_mul_row(a, x, y, val):
             temp = vc.multiply_by_value(a[y].copy(), val)
             a[x] = vc.difference(a[x], temp)
             return a
+
+
+def matrix_copy(matrix):
+    return [elem[:] for elem in matrix]

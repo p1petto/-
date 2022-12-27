@@ -48,3 +48,9 @@ def get_expanded_matrix(matrix, res):
     for i in range(len(res)):
         expanded_matrix[i].append(res[i])
     return expanded_matrix
+
+def factorial(n):
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)
