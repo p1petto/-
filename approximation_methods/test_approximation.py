@@ -25,3 +25,10 @@ def test_second_degree_polynomial():
                                                                 [3, 4],
                                                                 [3.5, 3],
                                                                 [6, 7]], [1, 3, 5]),[2.08, 3.26, 5.46], 1E-1) == True
+
+
+def test_third_degree_polynomial():
+    assert is_vector_almost_equal(apx.third_degree_polynomial([[1, 2],
+                                                                [3, 4],
+                                                                [3.5, 3],
+                                                                [6, 7]], [1, 3, 5]),[2, 4, 2.16], 1E-1) == True
