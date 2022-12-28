@@ -7,13 +7,8 @@ import interpolation_methods.lagrange_polynomial as lp
 from matplotlib.ticker import (MultipleLocator, FormatStrFormatter, AutoMinorLocator)
 import numpy as np
 import matrix.matrix as mx
-import interpolation_methods.linear_interpolation_and_extrapolation as mx
 import vector.vectors as vc
 from add_func import *
-
-
-def test_draw_least_squares():
-    draw_least_squares("Метод наименьших квадратов", [[2],[3]], [4, 9])
 
 
 def draw_least_squares(title, matrix, res):
@@ -27,7 +22,6 @@ def draw_least_squares(title, matrix, res):
     data_y = []
     for element in data_x:
         data_y.append(get_y(matrix, res, element))
-
 
     ax.plot(data_x, data_y)
     ax.scatter(xr, yr, c="red")
@@ -56,3 +50,30 @@ def get_y(matrix, res, x):
     return (x ** 2) * e[0] + x * e[1] + e[2]
 
 
+def draw_linear_approximation(title, data_xy, data_xr):
+    fig, ax = plt.subplots(figsize=(8, 6))
+    draw_grid(fig, ax, title)
+
+    coef = apx.get_coef(data_xy)
+    x_array = [-1, 7]
+    y_array = apx.linear_approximation(data_xy, x_array)
+
+    xr = mx.get_col_by_idex(data_xy, 0)
+    yr = mx.get_col_by_idex(data_xy, 1)
+
+    data_yr = apx.linear_approximation(data_xy, data_xr)
+
+    ax.plot(x_array, y_array)
+    ax.scatter(xr, yr, c="blue")
+    ax.scatter(data_xr, data_yr, c="red")
+    ax.legend()
+
+    plt.show()
+
+
+def test_draw_least_squares():
+    draw_least_squares("Метод наименьших квадратов", [[2],[3]], [4, 9])
+
+
+def test_draw_linear_approximation():
+    draw_linear_approximation("Линейная аппроксимация",[[1, 2],[3, 4],[3.5, 3],[6, 7]], [1, 3, 5])

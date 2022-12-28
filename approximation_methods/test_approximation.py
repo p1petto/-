@@ -17,4 +17,4 @@ def test_linear_approximation():
     assert is_vector_almost_equal(apx.linear_approximation([[1, 2],
                                                           [3, 4],
                                                          [3.5, 3],
-                                                         [6, 7]], [1, 3, 5]), [1.69, 3.63, 5.6], 1E-1) == True
+                                                         [6, 7]], [1, 3, 5]),[1.69, 3.63, 5.6], 1E-1) == True

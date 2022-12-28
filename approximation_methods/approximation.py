@@ -56,6 +56,7 @@ def get_b(data_xy):
         b_matrix.append([data_xy[i][1]])
     return b_matrix
 
+
 def get_coef(data_xy):
     a_matrix = get_a(data_xy)
     # b = mx.get_col_by_idex(data_xy, 1)
