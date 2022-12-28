@@ -57,7 +57,7 @@ def get_b(data_xy):
     return b_matrix
 
 
-def get_coef(data_xy):
+def get_coef_linear(data_xy):
     a_matrix = get_a(data_xy)
     # b = mx.get_col_by_idex(data_xy, 1)
     b = get_b(data_xy)
@@ -69,7 +69,7 @@ def get_coef(data_xy):
     return x
 
 
-def get_function_values(data_x, x):
+def get_function_values_linear(data_x, x):
     a_matrix = []
     for i in range(len(data_x)):
         a_matrix.append([data_x[i], 1])
@@ -79,8 +79,40 @@ def get_function_values(data_x, x):
 
 
 def linear_approximation(data_xy, data_x):
-    x = get_coef(data_xy)
+    x = get_coef_linear(data_xy)
     x = [[i] for i in x]
-    y = get_function_values(data_x, x)
+    y = get_function_values_linear(data_x, x)
     y = [i[0] for i in y]
     return y
+
+
+def get_coef_second(data_xy):
+    b = get_b(data_xy)
+    a_matrix = []
+    for i in range(len(data_xy)):
+        x = data_xy[i][0]
+        a_matrix.append([x * x, x, 1])
+    transposed_matrix = mx.transposition(a_matrix)
+    a_tilda = mx.multiply(transposed_matrix, a_matrix)
+    b_tilda = mx.multiply(transposed_matrix, b)
+    b_tilda = [i[0] for i in b_tilda]
+    x = gj.main(a_tilda, b_tilda)
+    return x
+
+
+def get_function_values_second(data_x, k):
+    a_matrix = []
+    for i in range(len(data_x)):
+        x = data_x[i]
+        a_matrix.append([x * x, x, 1])
+    y = mx.multiply(a_matrix, k)
+    return y
+
+def second_degree_polynomial(data_xy, data_x):
+    x = get_coef_second(data_xy)
+    x = [[i] for i in x]
+    y = get_function_values_second(data_x, x)
+    y = [i[0] for i in y]
+    return y
+
+

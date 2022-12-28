@@ -54,7 +54,7 @@ def draw_linear_approximation(title, data_xy, data_xr):
     fig, ax = plt.subplots(figsize=(8, 6))
     draw_grid(fig, ax, title)
 
-    coef = apx.get_coef(data_xy)
+    coef = apx.get_coef_linear(data_xy)
     x_array = [-1, 7]
     y_array = apx.linear_approximation(data_xy, x_array)
 

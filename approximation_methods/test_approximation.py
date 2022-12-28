@@ -18,3 +18,10 @@ def test_linear_approximation():
                                                           [3, 4],
                                                          [3.5, 3],
                                                          [6, 7]], [1, 3, 5]),[1.69, 3.63, 5.6], 1E-1) == True
+
+
+def test_second_degree_polynomial():
+    assert is_vector_almost_equal(apx.second_degree_polynomial([[1, 2],
+                                                                [3, 4],
+                                                                [3.5, 3],
+                                                                [6, 7]], [1, 3, 5]),[2.08, 3.26, 5.46], 1E-1) == True
