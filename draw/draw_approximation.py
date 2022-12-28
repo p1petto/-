@@ -1,10 +1,6 @@
 from draw.draw_interpolation import draw_grid
 import matplotlib.pyplot as plt
-import  approximation_methods.approximation as apx
-import interpolation_methods.linear_interpolation_and_extrapolation as li
-import interpolation_methods.piecewise_linear_interpolation as pli
-import interpolation_methods.lagrange_polynomial as lp
-from matplotlib.ticker import (MultipleLocator, FormatStrFormatter, AutoMinorLocator)
+import approximation_methods.approximation as apx
 import numpy as np
 import matrix.matrix as mx
 import vector.vectors as vc
@@ -15,7 +11,7 @@ def draw_least_squares(title, matrix, res):
     fig, ax = plt.subplots(figsize=(8, 6))
     draw_grid(fig, ax, title)
 
-    xr = apx.least_squares(matrix,res)
+    xr = apx.least_squares(matrix, res)
     yr = get_y(matrix, res, xr[0])
 
     data_x = np.arange(0, 5, 0.05)
@@ -113,16 +109,16 @@ def draw_third_degree_polynomial(title, data_xy, data_xr):
 
 
 def test_draw_least_squares():
-    draw_least_squares("Метод наименьших квадратов", [[2],[3]], [4, 9])
+    draw_least_squares("Метод наименьших квадратов", [[2], [3]], [4, 9])
 
 
 def test_draw_linear_approximation():
-    draw_linear_approximation("Линейная аппроксимация",[[1, 2],[3, 4],[3.5, 3],[6, 7]], [1, 3, 5])
+    draw_linear_approximation("Линейная аппроксимация", [[1, 2], [3, 4], [3.5, 3], [6, 7]], [1, 3, 5])
 
 
 def test_draw_second_degree_polynomial():
-    draw_second_degree_polynomial("Аппроксимация полиномом 2-й степени",[[1, 2],[3, 4],[3.5, 3],[6, 7]], [1, 3, 5])
+    draw_second_degree_polynomial("Аппроксимация полиномом 2-й степени", [[1, 2], [3, 4], [3.5, 3], [6, 7]], [1, 3, 5])
 
 
 def test_draw_third_degree_polynomial():
-    draw_third_degree_polynomial("Аппроксимация полиномом 3-й степени",[[1, 2],[3, 4],[3.5, 3],[6, 7]], [1, 3, 5])
+    draw_third_degree_polynomial("Аппроксимация полиномом 3-й степени", [[1, 2], [3, 4], [3.5, 3], [6, 7]], [1, 3, 5])
