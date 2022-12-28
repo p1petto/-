@@ -90,6 +90,28 @@ def draw_second_degree_polynomial(title, data_xy, data_xr):
 
     plt.show()
 
+
+def draw_third_degree_polynomial(title, data_xy, data_xr):
+    fig, ax = plt.subplots(figsize=(8, 6))
+    draw_grid(fig, ax, title)
+
+    x_array = np.arange(0, 7, 0.05)
+    y_array = apx.third_degree_polynomial(data_xy, x_array)
+    print(y_array)
+
+    xr = mx.get_col_by_idex(data_xy, 0)
+    yr = mx.get_col_by_idex(data_xy, 1)
+
+    data_yr = apx.third_degree_polynomial(data_xy, data_xr)
+
+    ax.plot(x_array, y_array)
+    ax.scatter(xr, yr, c="blue")
+    ax.scatter(data_xr, data_yr, c="red")
+    ax.legend()
+
+    plt.show()
+
+
 def test_draw_least_squares():
     draw_least_squares("Метод наименьших квадратов", [[2],[3]], [4, 9])
 
@@ -100,3 +122,7 @@ def test_draw_linear_approximation():
 
 def test_draw_second_degree_polynomial():
     draw_second_degree_polynomial("Аппроксимация полиномом 2-й степени",[[1, 2],[3, 4],[3.5, 3],[6, 7]], [1, 3, 5])
+
+
+def test_draw_third_degree_polynomial():
+    draw_third_degree_polynomial("Аппроксимация полиномом 3-й степени",[[1, 2],[3, 4],[3.5, 3],[6, 7]], [1, 3, 5])
