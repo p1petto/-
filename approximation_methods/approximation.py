@@ -32,24 +32,6 @@ def get_derivatives(matrix):
     return derivatives
 
 
-def least_squares(matrix, res):
-    vc.multiply_by_value(res, -1)
-    expanded_matrix = get_expanded_matrix(matrix, res)
-
-    derivatives = get_derivatives(expanded_matrix)
-
-    roots = get_roots(derivatives)
-
-    return roots
-
-
-def get_a(data_xy):
-    a_matrix = []
-    for i in range(len(data_xy)):
-        a_matrix.append([data_xy[i][0], 1])
-    return a_matrix
-
-
 def get_b(data_xy):
     b_matrix = []
     for i in range(len(data_xy)):
@@ -58,7 +40,9 @@ def get_b(data_xy):
 
 
 def get_coef_linear(data_xy):
-    a_matrix = get_a(data_xy)
+    a_matrix = []
+    for i in range(len(data_xy)):
+        a_matrix.append([data_xy[i][0], 1])
     b = get_b(data_xy)
     transposed_matrix = mx.transposition(a_matrix)
     a_tilda = mx.multiply(transposed_matrix, a_matrix)
@@ -108,14 +92,6 @@ def get_function_values_second(data_x, k):
     return y
 
 
-def second_degree_polynomial(data_xy, data_x):
-    x = get_coef_second(data_xy)
-    x = [[i] for i in x]
-    y = get_function_values_second(data_x, x)
-    y = [i[0] for i in y]
-    return y
-
-
 def get_coef_third(data_xy):
     b = get_b(data_xy)
     a_matrix = []
@@ -139,6 +115,25 @@ def get_function_values_third(data_x, k):
     return y
 
 
+def least_squares(matrix, res):
+    vc.multiply_by_value(res, -1)
+    expanded_matrix = get_expanded_matrix(matrix, res)
+
+    derivatives = get_derivatives(expanded_matrix)
+
+    roots = get_roots(derivatives)
+
+    return roots
+
+
+def second_degree_polynomial(data_xy, data_x):
+    x = get_coef_second(data_xy)
+    x = [[i] for i in x]
+    y = get_function_values_second(data_x, x)
+    y = [i[0] for i in y]
+    return y
+
+
 def third_degree_polynomial(data_xy, data_x):
     x = get_coef_third(data_xy)
     x = [[i] for i in x]
@@ -146,9 +141,3 @@ def third_degree_polynomial(data_xy, data_x):
     y = [i[0] for i in y]
     print(y)
     return y
-
-
-third_degree_polynomial([[1, 2],
-                        [3, 4],
-                        [3.5, 3],
-                        [6, 7]], [1, 3, 5])
