@@ -4,12 +4,12 @@ import vector.vectors as vc
 import gauss_jordan_method.gauss_jordan as gj
 
 
-def get_partial_derivative(mx, variable):
-    for i in range(len(mx)):
-        vc.multiply_by_value(mx[i], mx[i][variable])
-    derivative = [0 for i in range(len(mx[0]))]
-    for i in range(len(mx)):
-        derivative = vc.addition(derivative, mx[i])
+def get_partial_derivative(m, variable):
+    for i in range(len(m)):
+        vc.multiply_by_value(m[i], m[i][variable])
+    derivative = [0 for _ in range(len(m[0]))]
+    for i in range(len(m)):
+        derivative = vc.addition(derivative, m[i])
     return derivative
 
 
